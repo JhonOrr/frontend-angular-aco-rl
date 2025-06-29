@@ -1,0 +1,95 @@
+<main class="container mx-auto mt-8 px-4">
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-2xl font-semibold">Gestión de Órdenes</h2>
+    <div class="flex gap-4">
+      <button
+        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 cursor-pointer"
+      >
+        Nueva Orden
+      </button>
+      <button
+        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 cursor-pointer"
+        (click)="getOrders()"
+      >
+        Filtrar
+      </button>
+    </div>
+  </div>
+
+  <!-- filters -->
+  <div class="bg-white p-6 rounded-lg shadow mb-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <input
+        type="text"
+        placeholder="Buscar orden..."
+        class="p-2 border rounded-lg"
+      />
+      <select class="p-2 border rounded-lg">
+        <option>Estado: Todos</option>
+        <option>Pendiente</option>
+        <option>En proceso</option>
+        <option>Completado</option>
+      </select>
+      <input type="date" class="p-2 border rounded-lg" />
+    </div>
+  </div>
+
+  <!-- table -->
+
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="w-full">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            # Orden
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Cliente
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Ubicación recogida
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Ubicación entrega
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Capacidad
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Estado
+          </th>
+          <th class="px-6 py-3 text-left text-sm font-medium text-gray-500">
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        @if(orders$ | async; as orders){ @for (order of orders; track $index) {
+
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">{{ order.id }}</td>
+          <td class="px-6 py-4">{{ order.customer }}</td>
+          <td class="px-6 py-4">
+            {{ order.pickup_lng }} - {{ order.pickup_lat }}
+          </td>
+          <td class="px-6 py-4">
+            {{ order.delivery_lng }} - {{ order.delivery_lat }}
+          </td>
+          <td class="px-6 py-4">{{ order.capacity }}</td>
+          <td class="px-6 py-4">
+            <span
+              class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm"
+            >
+            {{order.status}}
+            </span>
+          </td>
+          <td class="px-6 py-4 flex gap-2">
+            <button class="text-blue-600 hover:text-blue-800">Editar</button>
+            <button class="text-red-600 hover:text-red-800">Eliminar</button>
+          </td>
+        </tr>
+        }}
+      </tbody>
+    </table>
+  </div>
+</main>

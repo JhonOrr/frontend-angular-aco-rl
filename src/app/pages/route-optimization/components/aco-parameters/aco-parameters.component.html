@@ -1,0 +1,93 @@
+<div class="bg-white p-6 rounded-lg shadow h-fit">
+  <h2 class="text-xl font-semibold mb-4">Parámetros ACO</h2>
+  <form class="space-y-4" [formGroup]="acoParametersForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Iteraciones
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="iterations"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Factor de evaporación:
+        <span class="font-bold"> </span>
+      </label>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        class="w-full"
+        formControlName="evaporation_rate"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700"> Hormigas </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="num_ants"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Nro de Vehículos
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="vehicles"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Capacidad por vehículo
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="max_capacity"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Distancia por vehículo (KM)
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="max_distance"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Parámetro α
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="alpha"
+      />
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        Parámetro β
+      </label>
+      <input
+        type="number"
+        class="w-full p-2 border rounded-lg"
+        formControlName="beta"
+      />
+    </div>
+    <button
+      class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 cursor-pointer"
+      type="submit"
+    >
+      Generar Rutas
+    </button>
+  </form>
+</div>
