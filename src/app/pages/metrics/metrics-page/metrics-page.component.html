@@ -1,0 +1,10 @@
+<main>
+  <div class="p-8">
+    <h2 class="mb-8 text-4xl">Dashboard</h2>
+    <div class="grid grid-cols-4 gap-8">
+      <metric-card title="Distancia recorrida" [value]="distancia()" unit="Km" />
+      <metric-card title="Tiempo" [value]="tiempo()" unit="h"/>
+      <metric-card title="Velocidad promedio" [value]="velocidadPromedio()" unit="Km/h"/>
+    </div>
+  </div>
+</main>

@@ -10,6 +10,6 @@ export class OrdersServiceService {
   private http = inject(HttpClient);
 
   getOrders = (): Observable<Order[]> => {
-    return this.http.get<Order[]>('http://localhost:8000/api/orders/');
+    return this.http.get<Order[]>('https://backen-django-aco-rl-fgagduasagdbejh8.northcentralus-01.azurewebsites.net/api/orders/');
   };
 }

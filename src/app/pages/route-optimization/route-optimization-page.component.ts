@@ -39,7 +39,6 @@ export class RouteOptimizationPageComponent implements AfterViewInit {
 
   testOutput(res: ACOResponse) {
     this.acoResponse = res;
-    // Crear opciones para el selector de vehículos
     this.vehicleOptions = res.routes.map(route => ({
       id: route.vehicle_id,
       label: `Vehículo ${route.vehicle_id}`

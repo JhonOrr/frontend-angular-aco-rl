@@ -4,6 +4,7 @@
     <div class="flex gap-4">
       <button
         class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 cursor-pointer"
+        (click)="openAddOrderForm()"
       >
         Nueva Orden
       </button>
@@ -80,7 +81,7 @@
             <span
               class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm"
             >
-            {{order.status}}
+              {{ order.status }}
             </span>
           </td>
           <td class="px-6 py-4 flex gap-2">
@@ -92,4 +93,137 @@
       </tbody>
     </table>
   </div>
+
+  <custom-dialog [open]="true">
+    
+    <div dialog-header>
+      <h2 class="font-semibold text-[#1d2d3e] text-lg">Agregar Nueva Orden</h2>
+    </div>
+
+    <div dialog-footer>
+      <div class="flex justify-end gap-4">
+        <button
+          type="button"
+          class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          form="order-form"
+          class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+        >
+          Crear Orden
+        </button>
+      </div>
+    </div>
+
+    <div id="order-form" class="space-y-4">
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">
+          Cliente
+        </label>
+        <input
+          type="text"
+          class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          placeholder="Cliente"
+          required
+          name="customer"
+          onChange="{handleFiltros}"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Capacidad
+          </label>
+          <input
+            type="numeric"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Capacidad"
+            required
+            name="capacity"
+            onChange="{handleFiltros}"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Estado
+          </label>
+          <select
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            defaultValue="Pendiente"
+            onChange="{handleFiltros}"
+            name="status"
+          >
+            <option value="Pendiente">Pendiente</option>
+            <option value="En Proceso">En proceso</option>
+            <option value="Completado">Completado</option>
+          </select>
+        </div>
+      </div>
+      <p>Ubicación Recogida</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Latitud
+          </label>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ej: -12.084593"
+            required
+            onChange="{handleFiltros}"
+            name="pickup_lat"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Longitud
+          </label>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ej: -77.029709"
+            required
+            onChange="{handleFiltros}"
+            name="pickup_lng"
+          />
+        </div>
+      </div>
+      <p>Ubicación Destino</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Latitud
+          </label>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ej: -12.084593"
+            required
+            onChange="{handleFiltros}"
+            name="delivery_lat"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label class="block text-sm font-medium text-gray-700">
+            Longitud
+          </label>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Ej: -77.029709"
+            required
+            onChange="{handleFiltros}"
+            name="delivery_lng"
+          />
+        </div>
+      </div>
+    </div>
+  </custom-dialog>
 </main>

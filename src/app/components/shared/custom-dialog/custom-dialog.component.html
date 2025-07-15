@@ -1,0 +1,29 @@
+<div
+  class="dialogOverlay"
+  [class.open]="open"
+  (click)="onOverlayClick($event)"
+  *ngIf="open"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    class="dialogContent {{ className }} {{ open ? 'open' : '' }}"
+    [ngStyle]="style"
+    role="document"
+  >
+    <header class="px-6 py-4" style="border-bottom: 1px solid #d9d9d9;">
+      <ng-content select="[dialog-header]"></ng-content>
+    </header>
+
+    <main class="px-6 py-2" style="max-height: 750px; overflow: auto;">
+      <ng-content></ng-content>
+    </main>
+
+    <footer
+      style="border-top: 1px solid #d9d9d9; width: 100%; bottom: 0;"
+      class="py-3 px-6"
+    >
+      <ng-content select="[dialog-footer]"></ng-content>
+    </footer>
+  </div>
+</div>

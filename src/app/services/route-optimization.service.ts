@@ -9,9 +9,19 @@ import { ACOResponse } from '../pages/route-optimization/interfaces/ACOResponse'
 })
 export class RouteOptimizationService {
   private http = inject(HttpClient);
+  // private apiUrl =
+  //   'https://backen-django-aco-rl-fgagduasagdbejh8.northcentralus-01.azurewebsites.net';
+
+  private apiUrl = 'http://localhost:8000'
 
   getRoutes = (parameters: any): Observable<ACOResponse> => {
-    return this.http.post<ACOResponse>('http://localhost:8000/api/run-aco/', parameters);
+    return this.http.post<ACOResponse>(
+      `${this.apiUrl}/api/run-aco/`,
+      parameters
+    );
   };
-}
 
+  getACOResult(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/api/get-routes/`);
+  }
+}
