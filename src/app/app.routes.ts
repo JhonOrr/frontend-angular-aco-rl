@@ -2,18 +2,20 @@ import { Routes } from '@angular/router';
 import { OrdersPageComponent } from './pages/orders/orders-page.component';
 import { RouteOptimizationPageComponent } from './pages/route-optimization/route-optimization-page.component';
 import { MetricsPageComponent } from './pages/metrics/metrics-page/metrics-page.component';
+import { SimulationPageComponent } from './pages/simulation/simulation-page.component';
 
 export const routes: Routes = [
   {
     path: 'orders',
-    component: OrdersPageComponent
+    component: OrdersPageComponent,
   },
   {
     path: 'route-optimization',
-    component: RouteOptimizationPageComponent
+    component: RouteOptimizationPageComponent,
   },
   {
     path: 'metrics',
-    component: MetricsPageComponent
-  }
+    component: MetricsPageComponent,
+  },
+  { path: 'simulation', component: SimulationPageComponent },
 ];

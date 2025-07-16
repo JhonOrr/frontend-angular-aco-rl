@@ -1,0 +1,40 @@
+<div *ngIf="loading">Cargando datos de rutas...</div>
+<div *ngIf="!loading">
+  <h2>Simulación de avance de vehículos</h2>
+  <div style="margin-bottom: 1em">
+    <label for="speedInput">Velocidad promedio (km/h): </label>
+    <input
+      id="speedInput"
+      type="number"
+      min="1"
+      [(ngModel)]="speedKmh"
+      (change)="onSpeedChange()"
+      style="width: 80px"
+    />
+  </div>
+  <label for="timeSlider">Tiempo transcurrido: {{ time }} min</label>
+  <input
+    id="timeSlider"
+    type="range"
+    min="0"
+    [max]="maxTime"
+    [(ngModel)]="time"
+  />
+  <div *ngIf="vehicleRoutes.length === 0">No hay rutas disponibles.</div>
+  <div *ngIf="vehicleRoutes.length > 0" class="card-grid">
+    <div
+      *ngFor="let v of getVehicleStates()"
+      class="vehicle-card"
+      [ngClass]="v.color"
+    >
+      <div class="veh-title">Vehículo {{ v.vehicle_id }}</div>
+      <div class="veh-carga">{{ v.carga }} / {{ v.capacidad }}</div>
+      <div class="veh-porcentaje">{{ v.porcentaje }}%</div>
+      <div class="veh-estado">
+        <span *ngIf="v.color === 'green'">Normal</span>
+        <span *ngIf="v.color === 'yellow'">Alerta</span>
+        <span *ngIf="v.color === 'red'">Exceso</span>
+      </div>
+    </div>
+  </div>
+</div>

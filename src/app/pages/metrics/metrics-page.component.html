@@ -38,17 +38,25 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       <metric-card
+        class="min-h-[150px]"
         title="Distancia recorrida"
         [value]="distancia()"
         unit="Km"
       />
-      <metric-card title="Tiempo estimado" [value]="tiempo()" unit="h" />
       <metric-card
+        class="min-h-[150px]"
+        title="Tiempo estimado"
+        [value]="tiempo()"
+        unit="h"
+      />
+      <metric-card
+        class="min-h-[150px]"
         title="Velocidad promedio"
         [value]="velocidadPromedio()"
         unit="Km/h"
       />
       <metric-card
+        class="min-h-[150px]"
         title="Distancia total"
         [value]="distanciaTotal()"
         unit="Km"
